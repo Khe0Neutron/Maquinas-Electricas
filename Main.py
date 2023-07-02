@@ -354,80 +354,82 @@ class VentanaIntNominal(QMainWindow):
         else:
             self.ui2.label_mensaje.setStyleSheet("color:red")
             self.ui2.label_mensaje.setText("No calculado... Faltan Datos")
-
 class VentanaCambiarTensionNominalMotor(QMainWindow):
-     def __init__(self.ui2, parent=None):
+     def __init__(self, parent=None):
+        #
         super(VentanaCambiarTensionNominalMotor, self).__init__(parent)
-        loadUi('cambiarTenNom.ui',self)
+        self.ui3 = ventanas.VentanaCambiarTensionNominalMotor()
+        self.ui3.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Cambio de Tension Nominal de motor 3F")
-        self.pushButton.clicked.connect(self.calcular)
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton_2.clicked.connect(self.limpiar)
+        #
+        self.ui3.pushButton.clicked.connect(self.calcular)
+        self.ui3.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui3.pushButton_2.clicked.connect(self.limpiar)
 
      def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
      def limpiar(self):
-        self.text_NumPriEsp.setText("")
-        self.text_CapAnt.setText("")
-        self.text_SecCobAnt.setText("")
-        self.text_TenRedAnt.setText("")
-        self.text_TenRedNue.setText("")
-        self.text_VueRanAnt.setText("")
-        self.label_NumEspNue.setText("-")
-        self.label_VueRanNue.setText("-")
-        self.label_SecAlaNue.setText("-")
-        self.label_CapNue.setText("-")
-        self.label_mensaje.setStyleSheet("color:black;")
-        self.label_mensaje.setText("")
+        self.ui3.text_NumPriEsp.setText("")
+        self.ui3.text_CapAnt.setText("")
+        self.ui3.text_SecCobAnt.setText("")
+        self.ui3.text_TenRedAnt.setText("")
+        self.ui3.text_TenRedNue.setText("")
+        self.ui3.text_VueRanAnt.setText("")
+        self.ui3.label_NumEspNue.setText("-")
+        self.ui3.label_VueRanNue.setText("-")
+        self.ui3.label_SecAlaNue.setText("-")
+        self.ui3.label_CapNue.setText("-")
+        self.ui3.label_mensaje.setStyleSheet("color:black;")
+        self.ui3.label_mensaje.setText("")
 
      def calcular(self):
-         v_r_a= self.text_VueRanAnt.toPlainText()
-         e_n= self.text_TenRedNue.toPlainText()
-         e_a= self.text_TenRedAnt.toPlainText()
-         s_a_a= self.text_SecCobAnt.toPlainText()
-         c_p= self.text_CapAnt.toPlainText()
-         n_p_e= self.text_NumPriEsp.toPlainText()
+         v_r_a= self.ui3.text_VueRanAnt.toPlainText()
+         e_n= self.ui3.text_TenRedNue.toPlainText()
+         e_a= self.ui3.text_TenRedAnt.toPlainText()
+         s_a_a= self.ui3.text_SecCobAnt.toPlainText()
+         c_p= self.ui3.text_CapAnt.toPlainText()
+         n_p_e= self.ui3.text_NumPriEsp.toPlainText()
          if e_a!="" and e_n!="":
             if v_r_a!="":   
                 v_r_n = VentanaCambiarTensionNominalMotor.calculoVueltasRanuraNueva(v_r_a,e_n,e_a)
                 v_r_n = float("%.4f" % v_r_n)
                 v_r_n = str(v_r_n)
-                self.label_VueRanNue.setText(v_r_n)
-                self.label_mensaje.setStyleSheet("color:black;")
-                self.label_mensaje.setText("Calculado!")
+                self.ui3.label_VueRanNue.setText(v_r_n)
+                self.ui3.label_mensaje.setStyleSheet("color:black;")
+                self.ui3.label_mensaje.setText("Calculado!")
                 if s_a_a!="":
                     s_a_n = VentanaCambiarTensionNominalMotor.calculoSeccionAlamNuevo(s_a_a,v_r_a,v_r_n)
                     s_a_n = float("%.4f" % s_a_n)
                     s_a_n = str(s_a_n)
-                    self.label_SecAlaNue.setText(s_a_n)
-                    self.label_mensaje.setStyleSheet("color:black;")
-                    self.label_mensaje.setText("Calculado!")
+                    self.ui3.label_SecAlaNue.setText(s_a_n)
+                    self.ui3.label_mensaje.setStyleSheet("color:black;")
+                    self.ui3.label_mensaje.setText("Calculado!")
                 else:
-                    self.label_mensaje.setStyleSheet("color:black;")
-                    self.label_mensaje.setText("Calculo parcial... complete seccion del \n alambre para obtener la nueva seccion")
+                    self.ui3.label_mensaje.setStyleSheet("color:black;")
+                    self.ui3.label_mensaje.setText("Calculo parcial... complete seccion del \n alambre para obtener la nueva seccion")
             else:
-                self.label_mensaje.setStyleSheet("color:black;")
-                self.label_mensaje.setText("Datos insuficientes! complete las vueltas de ranura antigua")
+                self.ui3.label_mensaje.setStyleSheet("color:black;")
+                self.ui3.label_mensaje.setText("Datos insuficientes! complete las vueltas de ranura antigua")
                 
             if c_p!="":
                 c_n = VentanaCambiarTensionNominalMotor.calculoNuevaCapacidad(e_a,c_p,e_n)
                 c_n = float("%.4f" % c_n)
                 c_n = str(c_n)
-                self.label_CapNue.setText(c_n)
-                self.label_mensaje.setStyleSheet("color:black;")
-                self.label_mensaje.setText("Calculado!")
+                self.ui3.label_CapNue.setText(c_n)
+                self.ui3.label_mensaje.setStyleSheet("color:black;")
+                self.ui3.label_mensaje.setText("Calculado!")
             
             if n_p_e!="":
                 n_e_n = VentanaCambiarTensionNominalMotor.calculoNUmeroEspirasNuevo(n_p_e,e_n,e_a)
                 n_e_n = float("%.4f" % n_e_n)
                 n_e_n = str(n_e_n)
-                self.label_NumEspNue.setText(n_e_n)
-                self.label_mensaje.setStyleSheet("color:black;")
-                self.label_mensaje.setText("Calculado!")
+                self.ui3.label_NumEspNue.setText(n_e_n)
+                self.ui3.label_mensaje.setStyleSheet("color:black;")
+                self.ui3.label_mensaje.setText("Calculado!")
          else:
-            self.label_mensaje.setStyleSheet("color:red;")
-            self.label_mensaje.setText("Datos insuficientes!")
+            self.ui3.label_mensaje.setStyleSheet("color:red;")
+            self.ui3.label_mensaje.setText("Datos insuficientes!")
 
      def calculoVueltasRanuraNueva(v_r_a,e_n,e_a):
          v_r_a=float(v_r_a)
@@ -458,41 +460,45 @@ class VentanaCambiarTensionNominalMotor(QMainWindow):
          return result
 class VentanaIndFlujoMagnetico(QMainWindow):
     def __init__(self, parent=None):
+        
+        #
         super(VentanaIndFlujoMagnetico, self).__init__(parent)
-        loadUi('indFlujoMagnetico.ui',self)
+        self.ui4 = ventanas.VentanaIndFlujoMagnetico()
+        self.ui4.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Induccion de Flujo Magnetico")
-        self.pushButton.clicked.connect(self.calcular)
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton_2.clicked.connect(self.limpiar)
+        #
+        self.ui4.pushButton.clicked.connect(self.calcular)
+        self.ui4.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui4.pushButton_2.clicked.connect(self.limpiar)
 
     def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
     def limpiar(self):
-        self.text_u.setText("")
-        self.text_N.setText("")
-        self.text_A.setText("")
-        self.text_L.setText("")
-        self.text_E.setText("")
-        self.text_I.setText("")
-        self.text_F.setText("")
-        self.text_Kd.setText("")
-        self.label_Induccion.setText("-")
-        self.label_EspirasF.setText("-")
-        self.label_mensaje.setStyleSheet("color: black; background-color:transparent;")
-        self.label_mensaje.setText("limpio!")
-        self.label_gauss.setText("")
-        self.label_espiras  .setText("")
+        self.ui4.text_u.setText("")
+        self.ui4.text_N.setText("")
+        self.ui4.text_A.setText("")
+        self.ui4.text_L.setText("")
+        self.ui4.text_E.setText("")
+        self.ui4.text_I.setText("")
+        self.ui4.text_F.setText("")
+        self.ui4.text_Kd.setText("")
+        self.ui4.label_Induccion.setText("-")
+        self.ui4.label_EspirasF.setText("-")
+        self.ui4.label_mensaje.setStyleSheet("color: black; background-color:transparent;")
+        self.ui4.label_mensaje.setText("limpio!")
+        self.ui4.label_gauss.setText("")
+        self.ui4.label_espiras  .setText("")
 
     def calcular(self):
-        u = self.text_u.toPlainText()
-        n = self.text_N.toPlainText()
-        a = self.text_A.toPlainText()
-        l = self.text_L.toPlainText()
-        e = self.text_E.toPlainText()
-        i = self.text_I.toPlainText()
-        f = self.text_F.toPlainText()
-        kd = self.text_Kd.toPlainText()
+        u = self.ui4.text_u.toPlainText()
+        n = self.ui4.text_N.toPlainText()
+        a = self.ui4.text_A.toPlainText()
+        l = self.ui4.text_L.toPlainText()
+        e = self.ui4.text_E.toPlainText()
+        i = self.ui4.text_I.toPlainText()
+        f = self.ui4.text_F.toPlainText()
+        kd = self.ui4.text_Kd.toPlainText()
         
 
         if u !="" and n!="" and a!="" and l!="" and e!="" and i!="" and f!="" and kd!="":
@@ -510,20 +516,20 @@ class VentanaIndFlujoMagnetico(QMainWindow):
             ind = VentanaIndFlujoMagnetico.induccionFlujoMagnetico(u,n,a,l,i)
             flujo = VentanaIndFlujoMagnetico.flujoMagnetico(a,l,ind)
             cond = VentanaIndFlujoMagnetico.conductoresBobinaFase(e,f,kd,flujo)
-            self.label_mensaje.setStyleSheet("color: black; background-color:transparent;")
-            self.label_mensaje.setText("calculado!")
-            self.label_Induccion.setAlignment(QtCore.Qt.AlignRight)
-            self.label_EspirasF.setAlignment(QtCore.Qt.AlignRight)
-            self.label_Induccion.setText(str(ind))
-            self.label_EspirasF.setText(str(cond))
-            self.label_gauss.setText("[Gauss]")
-            self.label_espiras.setText("[Espiras]")
+            self.ui4.label_mensaje.setStyleSheet("color: black; background-color:transparent;")
+            self.ui4.label_mensaje.setText("calculado!")
+            self.ui4.label_Induccion.setAlignment(QtCore.Qt.AlignRight)
+            self.ui4.label_EspirasF.setAlignment(QtCore.Qt.AlignRight)
+            self.ui4.label_Induccion.setText(str(ind))
+            self.ui4.label_EspirasF.setText(str(cond))
+            self.ui4.label_gauss.setText("[Gauss]")
+            self.ui4.label_espiras.setText("[Espiras]")
 
         else:
-            self.label_mensaje.setStyleSheet("color:red; background-color:yellow;")
-            self.label_mensaje.setText("Faltan datos!")
-            self.label_gauss.setText("")
-            self.label_gauss.setText("")
+            self.ui4.label_mensaje.setStyleSheet("color:red; background-color:yellow;")
+            self.ui4.label_mensaje.setText("Faltan datos!")
+            self.ui4.label_gauss.setText("")
+            self.ui4.label_gauss.setText("")
 
 
     def induccionFlujoMagnetico(u,n,a,l,i):
@@ -541,12 +547,14 @@ class VentanaIndFlujoMagnetico(QMainWindow):
         return result
 class TablaFlujoMagneticoMotores3F(QMainWindow):
     def __init__(self, parent=None):
+        #
         super(TablaFlujoMagneticoMotores3F, self).__init__(parent)
-        self.ui = ('flujoMagneticoM3F.ui')
-        loadUi(self.ui, self)
+        self.ui5 = ventanas.TablaFlujoMagneticoMotores3F()
+        self.ui5.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Tabla de Flujo Magnnetico Motores 3F")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)   
-        self.pushButton.clicked.connect(self.mostrar_tabla)
+        #
+        self.ui5.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)   
+        self.ui5.pushButton.clicked.connect(self.mostrar_tabla)
 
     def abrirVentanaPrincipal(self):
         self.parent().show()
@@ -567,24 +575,24 @@ class TablaFlujoMagneticoMotores3F(QMainWindow):
             QMessageBox.about(self,'Informacion', 'El archivo esta \n malogrado')
             return None
         
-        self.table.setRowCount(y)
-        self.table.setColumnCount(x)
-        self.table.resize(770, 480)
+        self.ui5.table.setRowCount(y)
+        self.ui5.table.setColumnCount(x)
+        self.ui5.table.resize(770, 480)
 
         for j in range(x):
             encabezado = QtWidgets.QTableWidgetItem(columnas[j])
-            self.table.setHorizontalHeaderItem(j,encabezado)
+            self.ui5.table.setHorizontalHeaderItem(j,encabezado)
             for i in range(y):
                 dato = str(df_fila[i][j])
                 if dato == 'nan':
                     dato=''
-                self.table.setItem(i,j,QTableWidgetItem(dato))  
+                self.ui5.table.setItem(i,j,QTableWidgetItem(dato))
     
     def mostrar_tabla(self):
         pix = QPixmap("img/tablaFlujoMagneticoM3F.png").scaled(450, 480)
         
-        self.label.resize(450,480)
-        self.label.setPixmap(pix)
+        self.ui5.label.resize(450,480)
+        self.ui5.label.setPixmap(pix)
 
 class CambioDeFrecuenciaMotor(QMainWindow):
     def __init__(self, parent=None):
