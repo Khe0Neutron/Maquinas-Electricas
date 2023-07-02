@@ -682,12 +682,13 @@ class CambioDeFrecuenciaMotor(QMainWindow):
 class CambioDePolaridad(QMainWindow):
     def __init__(self, parent=None):
         super(CambioDePolaridad, self).__init__(parent)
-        loadUi('cambioDePolaridad.ui', self)
+        self.ui7 = ventanas.CambioDePolaridad()
+        self.ui7.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Cambio de Polaridad")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton.clicked.connect(self.calcular)
-        self.pushButtonLimpiar.clicked.connect(self.limpiar)
-        self.pushButton_2.clicked.connect(self.abrirVentana_2)
+        self.ui7.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui7.pushButton.clicked.connect(self.calcular)
+        self.ui7.pushButtonLimpiar.clicked.connect(self.limpiar)
+        self.ui7.pushButton_2.clicked.connect(self.abrirVentana_2)
          
 
     def abrirVentana_2(self):
@@ -700,23 +701,23 @@ class CambioDePolaridad(QMainWindow):
         self.close()
 
     def limpiar(self):
-        self.textEdit_DenCorAnt.setText("")
-        self.textEdit_2_FacBobAnt.setText("")
-        self.textEdit_3_IndAntDie.setText("")
-        self.textEdit_4_PotAnt.setText("")
-        self.textEdit_5_DenCorNue.setText("")
-        self.textEdit_6_FacBobNue.setText("")
-        self.textEdit_7_IndNueDie.setText("")
-        self.label_PotNue.setText("")
+        self.ui7.textEdit_DenCorAnt.setText("")
+        self.ui7.textEdit_2_FacBobAnt.setText("")
+        self.ui7.textEdit_3_IndAntDie.setText("")
+        self.ui7.textEdit_4_PotAnt.setText("")
+        self.ui7.textEdit_5_DenCorNue.setText("")
+        self.ui7.textEdit_6_FacBobNue.setText("")
+        self.ui7.textEdit_7_IndNueDie.setText("")
+        self.ui7.label_PotNue.setText("")
 
     def calcular(self):
-        denCorAnt = self.textEdit_DenCorAnt.toPlainText()
-        facBobAnt = self.textEdit_2_FacBobAnt.toPlainText()
-        indAntDie = self.textEdit_3_IndAntDie.toPlainText()
-        potAnt = self.textEdit_4_PotAnt.toPlainText()
-        denCorNue = self.textEdit_5_DenCorNue.toPlainText()
-        facBobNue = self.textEdit_6_FacBobNue.toPlainText()
-        indNueDie = self.textEdit_7_IndNueDie.toPlainText()
+        denCorAnt = self.ui7.textEdit_DenCorAnt.toPlainText()
+        facBobAnt = self.ui7.textEdit_2_FacBobAnt.toPlainText()
+        indAntDie = self.ui7.textEdit_3_IndAntDie.toPlainText()
+        potAnt = self.ui7.textEdit_4_PotAnt.toPlainText()
+        denCorNue = self.ui7.textEdit_5_DenCorNue.toPlainText()
+        facBobNue = self.ui7.textEdit_6_FacBobNue.toPlainText()
+        indNueDie = self.ui7.textEdit_7_IndNueDie.toPlainText()
 
         denCorAnt=float(denCorAnt)
         facBobAnt=float(facBobAnt)
@@ -730,15 +731,16 @@ class CambioDePolaridad(QMainWindow):
         potNue = potAnt*denCorNue*facBobNue*indNueDie/(denCorAnt*facBobAnt*indAntDie)
         potNue = float("%.4f" %potNue)
         potNue = str(potNue)
-        self.label_PotNue.setText(potNue)
+        self.ui7.label_PotNue.setText(potNue)
 
 class CambioDePolaridad_2(QMainWindow):
     def __init__(self, parent=None):
         super(CambioDePolaridad_2, self).__init__(parent)
-        loadUi('cambioDePolaridad_2.ui', self)
+        self.ui71 = ventanas.CambioDePolaridad_2()
+        self.ui71.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Cambio de Polaridad 2")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui71.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui71.pushButton.clicked.connect(self.calcular)
         #self.pushButtonLimpiar.clicked.connect(self.limpiar)
         
 
@@ -747,8 +749,8 @@ class CambioDePolaridad_2(QMainWindow):
         self.close()
 
     def calcular(self):
-        numRan = self.textEdit_1_NumRan.toPlainText()
-        numPol = self.textEdit_2_NumPol.toPlainText()
+        numRan = self.ui71.textEdit_1_NumRan.toPlainText()
+        numPol = self.ui71.textEdit_2_NumPol.toPlainText()
         numRan = float(numRan)
         numPol = float(numPol)
         yc = numRan/numPol
@@ -774,128 +776,134 @@ class CambioDePolaridad_2(QMainWindow):
         Kd = str(Kd)
         Kp = str(Kp)
         Kw = str(Kw)
-        self.textEdit_Y.setText(y)
-        self.textEdit_Yc.setText(yc)
-        self.textEdit_AngEle.setText(angElec)
-        self.textEdit_Kd.setText(Kd)
-        self.textEdit_Kp.setText(Kp)
-        self.textEdit_Kw.setText(Kw)
+        self.ui71.textEdit_Y.setText(y)
+        self.ui71.textEdit_Yc.setText(yc)
+        self.ui71.textEdit_AngEle.setText(angElec)
+        self.ui71.textEdit_Kd.setText(Kd)
+        self.ui71.textEdit_Kp.setText(Kp)
+        self.ui71.textEdit_Kw.setText(Kw)
 
 class motorMonofasicoCalc(QMainWindow):
     def __init__(self, parent=None):
         super(motorMonofasicoCalc, self).__init__(parent)
-        loadUi('motorMonofasicoCalc.ui', self)
+        self.ui8 = ventanas.motorMonofasicoCalc()
+        self.ui8.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calculos Motor Monofasico")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButtonLimpiar.clicked.connect(self.limpiar)
-        self.pushButton.clicked.connect(self.calNumEsp)
-        self.pushButton_2.clicked.connect(self.calSecMayNue)
-        self.pushButton_3.clicked.connect(self.calCapacidad)
-        self.pushButton_4.clicked.connect(self.calSecNue2)
+
+        self.ui8.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui8.pushButtonLimpiar.clicked.connect(self.limpiar)
+        self.ui8.pushButton.clicked.connect(self.calNumEsp)
+        self.ui8.pushButton_2.clicked.connect(self.calSecMayNue)
+        self.ui8.pushButton_3.clicked.connect(self.calCapacidad)
+        self.ui8.pushButton_4.clicked.connect(self.calSecNue2)
 
     def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
     def limpiar(self):
-        self.textTenPrim.setText("")
-        self.textTenNue.setText("")
-        self.textEspPrim.setText("")
-        self.label_EspNue.setText("")
-        self.textSeccPrim.setText("")
-        self.label_SeccNue.setText("")
-        self.textCapPrim.setText("")
-        self.label_CapNue.setText("")
-        self.textVelPrim.setText("")
-        self.textVelNue.setText("")
-        self.textSeccPrim_2.setText("")
-        self.label_SeccNue_2.setText("")
+        self.ui8.textTenPrim.setText("")
+        self.ui8.textTenNue.setText("")
+        self.ui8.textEspPrim.setText("")
+        self.ui8.label_EspNue.setText("")
+        self.ui8.textSeccPrim.setText("")
+        self.ui8.label_SeccNue.setText("")
+        self.ui8.textCapPrim.setText("")
+        self.ui8.label_CapNue.setText("")
+        self.ui8.textVelPrim.setText("")
+        self.ui8.textVelNue.setText("")
+        self.ui8.textSeccPrim_2.setText("")
+        self.ui8.label_SeccNue_2.setText("")
 
     def calNumEsp(self):
-        tenPrim = float(self.textTenPrim.toPlainText())
-        tenNue = float(self.textTenNue.toPlainText())
-        espPrim = float(self.textEspPrim.toPlainText())
+        tenPrim = float(self.ui8.textTenPrim.toPlainText())
+        tenNue = float(self.ui8.textTenNue.toPlainText())
+        espPrim = float(self.ui8.textEspPrim.toPlainText())
 
         espNue = espPrim*tenNue/tenPrim
         espNue = str(float("%.2f" %espNue))
         
-        self.label_EspNue.setText(espNue)
+        self.ui8.label_EspNue.setText(espNue)
         
 
     def calSecMayNue(self):
-        tenPrim = float(self.textTenPrim.toPlainText())
-        tenNue = float(self.textTenNue.toPlainText())
-        secPrim = float(self.textSeccPrim.toPlainText())
+        tenPrim = float(self.ui8.textTenPrim.toPlainText())
+        tenNue = float(self.ui8.textTenNue.toPlainText())
+        secPrim = float(self.ui8.textSeccPrim.toPlainText())
         
         secNue = secPrim*tenNue/tenPrim
         secNue = str(float("%.2f" %secNue))
 
-        self.label_SeccNue.setText(secNue) 
+        self.ui8.label_SeccNue.setText(secNue) 
 
     def calCapacidad(self):
-        tenPrim = float(self.textTenPrim.toPlainText())
-        tenNue = float(self.textTenNue.toPlainText())
-        capPrim = float(self.textCapPrim.toPlainText())
+        tenPrim = float(self.ui8.textTenPrim.toPlainText())
+        tenNue = float(self.ui8.textTenNue.toPlainText())
+        capPrim = float(self.ui8.textCapPrim.toPlainText())
         
         capNue = capPrim*tenNue/tenPrim
         capNue = str(float("%.4f" %capNue))
 
-        self.label_CapNue.setText(capNue)
+        self.ui8.label_CapNue.setText(capNue)
 
 
     def calSecNue2(self):
-        velPrim = float(self.textVelPrim.toPlainText())
-        velNue = float(self.textVelNue.toPlainText())
-        secPrim2 = float(self.textSeccPrim_2.toPlainText())
+        velPrim = float(self.ui8.textVelPrim.toPlainText())
+        velNue = float(self.ui8.textVelNue.toPlainText())
+        secPrim2 = float(self.ui8.textSeccPrim_2.toPlainText())
         
         secNue2 = secPrim2*velNue/velPrim
         secNue2 = str(float("%.4f" %secNue2))
 
-        self.label_SeccNue_2.setText(secNue2)
+        self.ui8.label_SeccNue_2.setText(secNue2)
 
 class calculosVarios(QMainWindow):
     def __init__(self,parent):
         super(calculosVarios, self).__init__(parent)
         loadUi('calculosVarios.ui', self)
+
+        super(calculosVarios, self).__init__(parent)
+        self.ui9 = ventanas.calculosVarios()
+        self.ui9.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calculos Varios")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton.clicked.connect(self.seleccion)
+        self.ui9.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui9.pushButton.clicked.connect(self.seleccion)
     
     def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
     def  seleccion(self):
         #primera seleccion
-        if self.radioButton_DC.isChecked():
+        if self.ui9.radioButton_DC.isChecked():
             sel1=1
-        elif self.radioButton_ACM.isChecked():
+        elif self.ui9.radioButton_ACM.isChecked():
             sel1=2
-        elif self.radioButton_ACB.isChecked():
+        elif self.ui9.radioButton_ACB.isChecked():
             sel1=3
-        elif self.radioButton_ACT.isChecked():
+        elif self.ui9.radioButton_ACT.isChecked():
             sel1=4
         else:
             sel1=0
             print("err")
         #segunda seleccion
-        if self.radioButton_A_HP.isChecked():
+        if self.ui9.radioButton_A_HP.isChecked():
             sel2=1
-        elif self.radioButton_A_KW.isChecked():
+        elif self.ui9.radioButton_A_KW.isChecked():
             sel2=2
-        elif self.radioButton_A_KVA.isChecked():
+        elif self.ui9.radioButton_A_KVA.isChecked():
             sel2=3
-        elif self.radioButton_KW_IE.isChecked():
+        elif self.ui9.radioButton_KW_IE.isChecked():
             sel2=4
-        elif self.radioButton_KVA_IE.isChecked():
+        elif self.ui9.radioButton_KVA_IE.isChecked():
             sel2=5
-        elif self.radioButton_HP_IE.isChecked():
+        elif self.ui9.radioButton_HP_IE.isChecked():
             sel2=6
-        elif self.radioButton_FP_IE.isChecked():
+        elif self.ui9.radioButton_FP_IE.isChecked():
             sel2=7
         else:
             print("err")
             sel2=0
 
-        self.label_mensaje.setText("")
+        self.ui9.label_mensaje.setText("")
 
         ventana = calculosVarios.funcion(sel1, sel2)
         if ventana == "Amperios conociendo HP en CC":
@@ -966,8 +974,8 @@ class calculosVarios(QMainWindow):
             dialog = Pag46(self)
             dialog.exec_()
         elif ventana == "PF en CC":
-            self.label_mensaje.setStyleSheet("color: green;font-weight: bold;")
-            self.label_mensaje.setText("El factor de potencia o PF es igual a 1 en CC")
+            self.ui9.label_mensaje.setStyleSheet("color: green;font-weight: bold;")
+            self.ui9.label_mensaje.setText("El factor de potencia o PF es igual a 1 en CC")
         elif ventana == "PF en CA 1F":
             dialog = Pag27(self)
             dialog.exec_()
@@ -978,14 +986,14 @@ class calculosVarios(QMainWindow):
             dialog = Pag47(self)
             dialog.exec_()
         elif ventana == "Sin formula":
-            self.label_mensaje.setStyleSheet("color: red;font-weight: bold;")
-            self.label_mensaje.setText("No se puede calcular! Sin formula...")
+            self.ui9.label_mensaje.setStyleSheet("color: red;font-weight: bold;")
+            self.ui9.label_mensaje.setText("No se puede calcular! Sin formula...")
         elif ventana == "Falta seleccionar":
-            self.label_mensaje.setStyleSheet("color: red;font-weight: bold;")
-            self.label_mensaje.setText("Falta seleccionar!!!")
+            self.ui9.label_mensaje.setStyleSheet("color: red;font-weight: bold;")
+            self.ui9.label_mensaje.setText("Falta seleccionar!!!")
         else:
-            self.label_mensaje.setStyleSheet("color: red;font-weight: bold;")
-            self.label_mensaje.setText("Algo salio Mal!")
+            self.ui9.label_mensaje.setStyleSheet("color: red;font-weight: bold;")
+            self.ui9.label_mensaje.setText("Algo salio Mal!")
 
     def funcion(sel1, sel2):
         if sel1 == 0 or sel2 == 0:
@@ -1028,12 +1036,13 @@ class calculosVarios(QMainWindow):
 class probarNucleo(QMainWindow):
     def __init__(self, parent=None):
         super(probarNucleo, self).__init__(parent)
-        loadUi('probarNucleo.ui', self)
+        self.ui10 = ventanas.probarNucleo()
+        self.ui10.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calculos para Probar el Nucleo")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton.clicked.connect(self.calcularInduccion)
-        self.pushButton_2.clicked.connect(self.calcularTension)
-        self.pushButton_3.clicked.connect(self.calcularVueltas)
+        self.ui10.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui10.pushButton.clicked.connect(self.calcularInduccion)
+        self.ui10.pushButton_2.clicked.connect(self.calcularTension)
+        self.ui10.pushButton_3.clicked.connect(self.calcularVueltas)
     
     def calcularInduccion(self):
         dialog = probarNucleo_1(self)
@@ -1052,27 +1061,31 @@ class pesoCobre(QMainWindow):
     def __init__(self, parent=None):
         super(pesoCobre, self).__init__(parent)
         loadUi('pesoCobre.ui', self)
+
+        super(pesoCobre, self).__init__(parent)
+        self.ui11 = ventanas.pesoCobre()
+        self.ui11.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calcular Peso del Cobre")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton_limpiar.clicked.connect(self.limpiar)
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui11.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui11.pushButton_limpiar.clicked.connect(self.limpiar)
+        self.ui11.pushButton.clicked.connect(self.calcular)
     def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
 
     def limpiar(self):
-        self.textEdit_long.setText("")
-        self.textEdit_cpar.setText("")
-        self.textEdit_nbob.setText("")
-        self.textEdit_nesp.setText("")
-        self.textEdit_diam.setText("")
-        self.label_peso.setText("-")
+        self.ui11.textEdit_long.setText("")
+        self.ui11.textEdit_cpar.setText("")
+        self.ui11.textEdit_nbob.setText("")
+        self.ui11.textEdit_nesp.setText("")
+        self.ui11.textEdit_diam.setText("")
+        self.ui11.label_peso.setText("-")
     def calcular(self):
-        long = float(self.textEdit_long.toPlainText())
-        cpar = float(self.textEdit_cpar.toPlainText())
-        nbob = float(self.textEdit_nbob.toPlainText())
-        nesp = float(self.textEdit_nesp.toPlainText())
-        diam = float(self.textEdit_diam.toPlainText())
+        long = float(self.ui11.textEdit_long.toPlainText())
+        cpar = float(self.ui11.textEdit_cpar.toPlainText())
+        nbob = float(self.ui11.textEdit_nbob.toPlainText())
+        nesp = float(self.ui11.textEdit_nesp.toPlainText())
+        diam = float(self.ui11.textEdit_diam.toPlainText())
         long_total = long*cpar*nbob*nesp
         radio = diam/2000
         volumen = long_total*math.pi*(radio**2)
@@ -1080,7 +1093,7 @@ class pesoCobre(QMainWindow):
         peso= volumen*8960
         peso = float("%.2f" %peso)
         peso = str(peso)
-        self.label_peso.setText(peso)
+        self.ui11.label_peso.setText(peso)
         
 class Pag11(QDialog):
     def __init__(self, parent):
@@ -1481,61 +1494,67 @@ class Pag47(QDialog):
         self.label_PF.setText(pf)
 class probarNucleo_1(QDialog):
     def __init__(self, parent):
-        super(probarNucleo_1,self).__init__(parent)
-        loadUi('calcularInduccion.ui', self)
+        #super(probarNucleo_1,self).__init__(parent)
+        #loadUi('calcularInduccion.ui', self)
+
+        super(probarNucleo_1, self).__init__(parent)
+        self.ui10_1 = ventanas.calcularInduccion()
+        self.ui10_1.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calcular Induccion de motor")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui10_1.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_1.toPlainText())
-        f = float(self.textEdit_2.toPlainText())
-        esp = float(self.textEdit_3.toPlainText())
-        sfe = float(self.textEdit_4.toPlainText())
-        n = float(self.textEdit_5.toPlainText())
+        ten = float(self.ui10_1.textEdit_1.toPlainText())
+        f = float(self.ui10_1.textEdit_2.toPlainText())
+        esp = float(self.ui10_1.textEdit_3.toPlainText())
+        sfe = float(self.ui10_1.textEdit_4.toPlainText())
+        n = float(self.ui10_1.textEdit_5.toPlainText())
 
         ind = ten*(10**8)/(4.44*f*esp*sfe*n)
         ind = float("%.2f" %ind)
         ind = str(ind)
 
-        self.label_7.setText(ind)
+        self.ui10_1.label_7.setText(ind)
 class probarNucleo_2(QDialog):
     def __init__(self, parent):
-        super(probarNucleo_2,self).__init__(parent)
-        loadUi('calcularTension.ui', self)
+        super(probarNucleo_2, self).__init__(parent)
+        self.ui10_2 = ventanas.calcularTension()
+        self.ui10_2.setupUi(self)
         self.setWindowTitle("Calcular Tension de motor")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui10_2.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ind = float(self.textEdit_1.toPlainText())
-        f = float(self.textEdit_2.toPlainText())
-        esp = float(self.textEdit_3.toPlainText())
-        sfe = float(self.textEdit_4.toPlainText())
-        n = float(self.textEdit_5.toPlainText())
+        ind = float(self.ui10_2.textEdit_1.toPlainText())
+        f = float(self.ui10_2.textEdit_2.toPlainText())
+        esp = float(self.ui10_2.textEdit_3.toPlainText())
+        sfe = float(self.ui10_2.textEdit_4.toPlainText())
+        n = float(self.ui10_2.textEdit_5.toPlainText())
 
         ten = 4.44*f*esp*sfe*n*ind/(10**8)
         ten = float("%.2f" %ten)
         ten = str(ten)
 
-        self.label_7.setText(ten)        
+        self.ui10_2.label_7.setText(ten)        
 class probarNucleo_3(QDialog):
     def __init__(self, parent):
-        super(probarNucleo_3,self).__init__(parent)
-        loadUi('calcularEspiras.ui', self)
+        super(probarNucleo_3, self).__init__(parent)
+        self.ui10_3 = ventanas.calcularEspiras()
+        self.ui10_3.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calcular Espiras de motor")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui10_3.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ind = float(self.textEdit_1.toPlainText())
-        f = float(self.textEdit_2.toPlainText())
-        ten = float(self.textEdit_3.toPlainText())
-        sfe = float(self.textEdit_4.toPlainText())
-        n = float(self.textEdit_5.toPlainText())
+        ind = float(self.ui10_3.textEdit_1.toPlainText())
+        f = float(self.ui10_3.textEdit_2.toPlainText())
+        ten = float(self.ui10_3.textEdit_3.toPlainText())
+        sfe = float(self.ui10_3.textEdit_4.toPlainText())
+        n = float(self.ui10_3.textEdit_5.toPlainText())
 
         esp = ten*(10**8)/(4.44*f*ind*sfe*n)
         esp = float("%.2f" %esp)
         esp = str(esp)
 
-        self.label_7.setText(esp) 
+        self.ui10_3.label_7.setText(esp) 
 
 app = QApplication(sys.argv)
 main = VentanaPrincipal()
