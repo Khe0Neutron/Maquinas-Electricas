@@ -1,0 +1,6 @@
+<RCC>
+    <qresource>
+        <file>img/triangulo.png</file>
+        <file>img/estrella.png</file>
+    </qresource>
+</RCC>

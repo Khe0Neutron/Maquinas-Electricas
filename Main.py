@@ -9,6 +9,8 @@ from PyQt5.uic import loadUi
 from PyQt5.QtCore import QFile
 from PyQt5.QtGui import QPalette, QColor
 import Login
+from recursos_rc import *
+
 
 def exit_program():
     main.close()
@@ -131,12 +133,12 @@ class VentanaTension(QMainWindow):
         self.label_12.setText("Limpio!")
         
     def triangulo(self):
-        pix = QPixmap("triangulo.png")
+        pix = QPixmap(":/img/triangulo.png")
         self.label_2.setPixmap(pix)
         #self.pushButton.clicked.connect(self.calcularTriangulo)
 
     def estrella(self):
-        pix = QPixmap("estrella.png")
+        pix = QPixmap(":/img/estrella.png")
         self.label_2.setPixmap(pix)
         #self.pushButton.clicked.connect(self.calcularEstrella)
               
