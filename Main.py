@@ -102,51 +102,51 @@ class VentanaTension(QMainWindow):
         #
         #
         super(VentanaTension, self).__init__(parent)
-        self.ui2 = ventanas.VentanaTension()
-        self.ui2.setupUi(self)  # Configurar la interfaz en la ventana principal
+        self.ui1 = ventanas.VentanaTension()
+        self.ui1.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Tension, Intensidad y Potencia")
         #loadUi('window5.ui', self)
         #self.setWindowTitle("Tension, Intensidad y Potencia")
         #
-        self.ui2.label_12.setText("")
+        self.ui1.label_12.setText("")
         self.radio_value()
-        self.ui2.radioButton.clicked.connect(self.triangulo)
-        self.ui2.radioButton_2.clicked.connect(self.estrella)
-        self.ui2.pushButton.clicked.connect(self.radio_value)
-        self.ui2.pushButton_2.clicked.connect(self.limpiar)
-        self.ui2.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui1.radioButton.clicked.connect(self.triangulo)
+        self.ui1.radioButton_2.clicked.connect(self.estrella)
+        self.ui1.pushButton.clicked.connect(self.radio_value)
+        self.ui1.pushButton_2.clicked.connect(self.limpiar)
+        self.ui1.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
 
-    
+
     def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
         
 
     def radio_value(self):
-        if self.ui2.radioButton.isChecked():
+        if self.ui1.radioButton.isChecked():
             self.calcularTriangulo()
-        elif self.ui2.radioButton_2.isChecked():
+        elif self.ui1.radioButton_2.isChecked():
             self.calcularEstrella()
         else:
             print("err")
     def limpiar(self):
-        self.ui2.text_IL.setText("")
-        self.ui2.text_IF.setText("")
-        self.ui2.text_EL.setText("")
-        self.ui2.text_EF.setText("")
-        self.ui2.text_Phi.setText("")
-        self.ui2.text_PL.setText("")
-        self.ui2.text_PF.setText("")
-        self.ui2.label_12.setText("Limpio!")
+        self.ui1.text_IL.setText("")
+        self.ui1.text_IF.setText("")
+        self.ui1.text_EL.setText("")
+        self.ui1.text_EF.setText("")
+        self.ui1.text_Phi.setText("")
+        self.ui1.text_PL.setText("")
+        self.ui1.text_PF.setText("")
+        self.ui1.label_12.setText("Limpio!")
         
     def triangulo(self):
         pix = QPixmap(":/img/triangulo.png")
-        self.ui2.label_2.setPixmap(pix)
+        self.ui1.label_2.setPixmap(pix)
         #self.pushButton.clicked.connect(self.calcularTriangulo)
 
     def estrella(self):
         pix = QPixmap(":/img/estrella.png")
-        self.ui2.label_2.setPixmap(pix)
+        self.ui1.label_2.setPixmap(pix)
         #self.pushButton.clicked.connect(self.calcularEstrella)
               
     def abrirVentanaPrincipal(self):
@@ -156,50 +156,50 @@ class VentanaTension(QMainWindow):
     def calcularTriangulo(self):
         print("estas en triangulo")
         i_l=i_f=e_l=e_f=phi=p_f=p_l=""
-        i_l = str(self.ui2.text_IL.toPlainText())
-        i_f = str(self.ui2.text_IF.toPlainText())
-        e_l = str(self.ui2.text_EL.toPlainText())
-        e_f = str(self.ui2.text_EF.toPlainText())
-        phi = str(self.ui2.text_Phi.toPlainText())
-        p_f = str(self.ui2.text_IF.toPlainText())
-        p_l = str(self.ui2.text_IF.toPlainText())
+        i_l = str(self.ui1.text_IL.toPlainText())
+        i_f = str(self.ui1.text_IF.toPlainText())
+        e_l = str(self.ui1.text_EL.toPlainText())
+        e_f = str(self.ui1.text_EF.toPlainText())
+        phi = str(self.ui1.text_Phi.toPlainText())
+        p_f = str(self.ui1.text_IF.toPlainText())
+        p_l = str(self.ui1.text_IF.toPlainText())
         if i_l != "" and i_f == "":
             print("entraste a t_i_f")
             i_l=float(i_l)
             result= VentanaTension.t_IF(i_l)
             i_f=float("%.4f" % result)
-            self.ui2.text_IF.setText(str(i_f))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_IF.setText(str(i_f))
+            self.ui1.label_12.setText("Calculado!")
         elif i_f != "" and i_l == "":
             print("entraste a t_i_l")
             i_f = float(i_f)
             result= VentanaTension.t_IL(i_f)
             i_l=float("%.4f" % result)
-            self.ui2.text_IL.setText(str(i_l))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_IL.setText(str(i_l))
+            self.ui1.label_12.setText("Calculado!")
         elif i_l == "" and i_f == "":
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.label_12.setText("Calculado!")
         else:    
-            self.ui2.label_12.setText("Limpie! no calculo...")
+            self.ui1.label_12.setText("Limpie! no calculo...")
 
         if e_l != "" and e_f == "":
             print("entraste a t_e_f")
             e_l=float(e_l)
             result= VentanaTension.t_EF(e_l)
             e_f=float("%.4f" % result)
-            self.ui2.text_EF.setText(str(e_f))
-            self.ui2.label_12.setText("Calculado!")  
+            self.ui1.text_EF.setText(str(e_f))
+            self.ui1.label_12.setText("Calculado!")  
         elif e_f != "" and e_l == "":
             print("entraste a t_e_l")
             e_f = float(e_f)
             result= VentanaTension.t_EL(e_f)
             e_l=float("%.4f" % result)
-            self.ui2.text_EL.setText(str(e_l))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_EL.setText(str(e_l))
+            self.ui1.label_12.setText("Calculado!")
         elif e_l == "" and e_f == "":
-            self.ui2.label_12.setText("Esperando...")
+            self.ui1.label_12.setText("Esperando...")
         else:    
-            self.ui2.label_12.setText("Limpie! no calculo...")
+            self.ui1.label_12.setText("Limpie! no calculo...")
             
         if phi != "":
             phi = float(phi)
@@ -208,59 +208,59 @@ class VentanaTension(QMainWindow):
             p_l = VentanaTension.p_fase(e_l,i_l,phi)
             p_f=float("%.4f" % p_f)
             p_l=float("%.4f" % p_l)
-            self.ui2.text_PF.setText(str(p_f))
-            self.ui2.text_PL.setText(str(p_l))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_PF.setText(str(p_f))
+            self.ui1.text_PL.setText(str(p_l))
+            self.ui1.label_12.setText("Calculado!")
         
     def calcularEstrella(self):
         print("estas en estrella")
         i_l=i_f=e_l=e_f=phi=p_f=p_l=""
-        i_l = str(self.ui2.text_IL.toPlainText())
-        i_f = str(self.ui2.text_IF.toPlainText())
-        e_l = str(self.ui2.text_EL.toPlainText())
-        e_f = str(self.ui2.text_EF.toPlainText())
-        phi = str(self.ui2.text_Phi.toPlainText())
-        p_f = str(self.ui2.text_IF.toPlainText())
-        p_l = str(self.ui2.text_IF.toPlainText())
+        i_l = str(self.ui1.text_IL.toPlainText())
+        i_f = str(self.ui1.text_IF.toPlainText())
+        e_l = str(self.ui1.text_EL.toPlainText())
+        e_f = str(self.ui1.text_EF.toPlainText())
+        phi = str(self.ui1.text_Phi.toPlainText())
+        p_f = str(self.ui1.text_IF.toPlainText())
+        p_l = str(self.ui1.text_IF.toPlainText())
         if i_l != "" and i_f == "":
             print("entraste a e_i_f")
             i_l=float(i_l)
             result= VentanaTension.e_IF(i_l)
             i_f=float("%.4f" % result)
-            self.ui2.text_IF.setText(str(i_f))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_IF.setText(str(i_f))
+            self.ui1.label_12.setText("Calculado!")
         elif i_f != "" and i_l == "":
             print("entraste a e_i_l")
             i_f = float(i_f)
             result= VentanaTension.e_IL(i_f)
             i_l=float("%.4f" % result)
-            self.ui2.text_IL.setText(str(i_l))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_IL.setText(str(i_l))
+            self.ui1.label_12.setText("Calculado!")
         elif i_l == "" and i_f == "":
             print("entraste a e_i_f")
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.label_12.setText("Calculado!")
         else:    
-            self.ui2.label_12.setText("Limpie! no calculo...")
+            self.ui1.label_12.setText("Limpie! no calculo...")
 
         if e_l != "" and e_f == "":
             print("entraste a e_e_f")
             e_l=float(e_l)
             result= VentanaTension.e_EF(e_l)
             e_f=float("%.4f" % result)
-            self.ui2.text_EF.setText(str(e_f))
-            self.ui2.label_12.setText("Calculado!")  
+            self.ui1.text_EF.setText(str(e_f))
+            self.ui1.label_12.setText("Calculado!")  
         elif e_f != "" and e_l == "":
             print("entraste a e_e_l")
             e_f = float(e_f)
             result= VentanaTension.e_EL(e_f)
             e_l=float("%.4f" % result)
-            self.ui2.text_EL.setText(str(e_l))
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.text_EL.setText(str(e_l))
+            self.ui1.label_12.setText("Calculado!")
         elif e_l == "" and e_f == "":
             print("entraste a e_e_f")
-            self.ui2.label_12.setText("Calculado!")
+            self.ui1.label_12.setText("Calculado!")
         else:    
-            self.ui2.label_12.setText("Limpie! no calculo...")
+            self.ui1.label_12.setText("Limpie! no calculo...")
             
         if phi != "":
             phi = float(phi)
@@ -269,8 +269,8 @@ class VentanaTension(QMainWindow):
             p_l = VentanaTension.p_fase(e_l,i_l,phi)
             p_f=float("%.4f" % p_f)
             p_l=float("%.4f" % p_l)
-            self.ui2.text_PF.setText(str(p_f))
-            self.ui2.text_PL.setText(str(p_l))
+            self.ui1.text_PF.setText(str(p_f))
+            self.ui1.text_PL.setText(str(p_l))
 
     def t_IL(int_fase):
         int_linea=int_fase*1.732
@@ -306,37 +306,39 @@ class VentanaIntNominal(QMainWindow):
     
     def __init__(self, parent=None):
         super(VentanaIntNominal, self).__init__(parent)
-        loadUi('window6.ui',self)
+        self.ui2 = ventanas.VentanaIntNominal()
+        self.ui2.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Intensidad Nominal")
-        self.pushButton.clicked.connect(self.calcular)
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButton_2.clicked.connect(self.limpiar)
+        #
+        self.ui2.pushButton.clicked.connect(self.calcular)
+        self.ui2.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui2.pushButton_2.clicked.connect(self.limpiar)
     
     def abrirVentanaPrincipal(self):
         self.parent().show()
         self.close()
 
     def limpiar(self):
-        self.text_IN.setText("")
-        self.text_EN.setText("")
-        self.text_Phi.setText("")
-        self.text_EF.setText("")
-        self.text_I.setText("")
-        self.text_E.setText("")
+        self.ui2.text_IN.setText("")
+        self.ui2.text_EN.setText("")
+        self.ui2.text_Phi.setText("")
+        self.ui2.text_EF.setText("")
+        self.ui2.text_I.setText("")
+        self.ui2.text_E.setText("")
     def calcular(self):
-        i_n = str(self.text_IN.toPlainText())
-        e_n = str(self.text_EN.toPlainText())
-        phi = str(self.text_Phi.toPlainText())
-        e_f = str(self.text_EF.toPlainText())
-        i = str(self.text_I.toPlainText())
-        e = str(self.text_E.toPlainText())
+        i_n = str(self.ui2.text_IN.toPlainText())
+        e_n = str(self.ui2.text_EN.toPlainText())
+        phi = str(self.ui2.text_Phi.toPlainText())
+        e_f = str(self.ui2.text_EF.toPlainText())
+        i = str(self.ui2.text_I.toPlainText())
+        e = str(self.ui2.text_E.toPlainText())
         if i_n!="" and e_n!="" and phi!="" and e_f!="" and i!="" and e!="":
-            i_n = float(self.text_IN.toPlainText())
-            e_n = float(self.text_EN.toPlainText())
-            phi = float(self.text_Phi.toPlainText())
-            e_f = float(self.text_EF.toPlainText())
-            i = float(self.text_I.toPlainText())
-            e = float(self.text_E.toPlainText())
+            i_n = float(self.ui2.text_IN.toPlainText())
+            e_n = float(self.ui2.text_EN.toPlainText())
+            phi = float(self.ui2.text_Phi.toPlainText())
+            e_f = float(self.ui2.text_EF.toPlainText())
+            i = float(self.ui2.text_I.toPlainText())
+            e = float(self.ui2.text_E.toPlainText())
             phi = phi*math.pi/180
             hp = i_n*e_n*math.cos(phi)*e_f*1.73/746
             kw = i*e*math.cos(phi)*(3**(1/2))/1000
@@ -344,17 +346,17 @@ class VentanaIntNominal(QMainWindow):
             hp = float("%.4f" % hp)
             kw = float("%.4f" % kw)
             int_nom = float("%.4f" % int_nom)
-            self.label_HP.setText(str(hp))
-            self.label_KW.setText(str(kw))
-            self.label_IntNom.setText(str(int_nom))
-            self.label_mensaje.setStyleSheet("color:green;")
-            self.label_mensaje.setText("Calculado!")
+            self.ui2.label_HP.setText(str(hp))
+            self.ui2.label_KW.setText(str(kw))
+            self.ui2.label_IntNom.setText(str(int_nom))
+            self.ui2.label_mensaje.setStyleSheet("color:green;")
+            self.ui2.label_mensaje.setText("Calculado!")
         else:
-            self.label_mensaje.setStyleSheet("color:red")
-            self.label_mensaje.setText("No calculado... Faltan Datos")
+            self.ui2.label_mensaje.setStyleSheet("color:red")
+            self.ui2.label_mensaje.setText("No calculado... Faltan Datos")
 
 class VentanaCambiarTensionNominalMotor(QMainWindow):
-     def __init__(self, parent=None):
+     def __init__(self.ui2, parent=None):
         super(VentanaCambiarTensionNominalMotor, self).__init__(parent)
         loadUi('cambiarTenNom.ui',self)
         self.setWindowTitle("Cambio de Tension Nominal de motor 3F")
