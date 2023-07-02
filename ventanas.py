@@ -96,7 +96,7 @@ class VentanaPrincipal(object):
         self.pushButton_11.setText(_translate("MainWindow", "Peso del Cobre"))
         self.pushButton_Exit.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Salir</span></p></body></html>"))
         self.pushButton_Exit.setText(_translate("MainWindow", "Salir"))
-
+#Ventana 1:
 class VentanaTension(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -253,7 +253,7 @@ class VentanaTension(object):
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" color:#33d17a;\">Elige un tipo de conexion.</span></p><p align=\"center\"><span style=\" color:#33d17a;\">Triangulo o Estrella</span></p></body></html>"))
         self.pushButton_2.setText(_translate("MainWindow", "Limpiar"))
         self.pushButtonAtras.setText(_translate("MainWindow", "Atras"))
-
+#Ventana 2:
 class VentanaIntNominal(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -376,7 +376,7 @@ class VentanaIntNominal(object):
         self.label_IntNom.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "Calcular"))
         self.pushButton_2.setText(_translate("MainWindow", "Limpiar"))
-
+#Ventana 3:
 class VentanaCambiarTensionNominalMotor(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -504,7 +504,7 @@ class VentanaCambiarTensionNominalMotor(object):
         self.pushButton.setText(_translate("MainWindow", "Calcular"))
         self.pushButton_2.setText(_translate("MainWindow", "Limpiar"))
         self.pushButtonAtras.setText(_translate("MainWindow", "Atras"))
-
+#Ventana 4:
 class VentanaIndFlujoMagnetico(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -639,6 +639,198 @@ class VentanaIndFlujoMagnetico(object):
         self.label_Induccion.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">-</p></body></html>"))
         self.label_EspirasF.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">-</p></body></html>"))
         self.label_F_2.setText(_translate("MainWindow", "Corriente (Amperios):"))
+#Ventana 5:
+class TablaFlujoMagneticoMotores3F(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("QWidget#centralwidget{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));}")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.pushButtonAtras = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButtonAtras.setGeometry(QtCore.QRect(0, 540, 89, 25))
+        self.pushButtonAtras.setMouseTracking(True)
+        self.pushButtonAtras.setStyleSheet("#pushButtonAtras{\n"
+"border-top-right-radius: 10px;\n"
+"border-bottom-right-radius: 10px;\n"
+"background-color: rgb(255, 0, 0);\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"#pushButtonAtras:hover {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.pushButtonAtras.setCheckable(False)
+        self.pushButtonAtras.setAutoRepeat(False)
+        self.pushButtonAtras.setAutoExclusive(False)
+        self.pushButtonAtras.setObjectName("pushButtonAtras")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(538, 20, 161, 25))
+        self.pushButton.setObjectName("pushButton")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(30, 50, 521, 451))
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(50, 20, 401, 17))
+        self.label_2.setObjectName("label_2")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButtonAtras.setText(_translate("MainWindow", "Atras"))
+        self.pushButton.setText(_translate("MainWindow", "Mostrar Tabla"))
+        self.label_2.setText(_translate("MainWindow", "TABLA DE FLUJO MAGNETICO DE MOTORES TRIFASICOS"))
+#Ventana 6:
+class CambioDeFrecuenciaMotor(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet("QWidget#centralwidget{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));}")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(30, 20, 371, 17))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(30, 70, 221, 17))
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(30, 120, 221, 17))
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(30, 170, 221, 17))
+        self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(30, 270, 221, 17))
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(110, 500, 671, 71))
+        self.label_6.setAutoFillBackground(False)
+        self.label_6.setStyleSheet("background-color: qlineargradient(spread:, x1:0, y1:0, x2:1, y2:1, stop:0.467662 rgba(80, 106, 145, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.199005 rgba(177, 222, 158, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.label_6.setScaledContents(True)
+        self.label_6.setWordWrap(True)
+        self.label_6.setObjectName("label_6")
+        self.pushButtonAtras = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButtonAtras.setGeometry(QtCore.QRect(0, 520, 89, 25))
+        self.pushButtonAtras.setMouseTracking(True)
+        self.pushButtonAtras.setStyleSheet("#pushButtonAtras{\n"
+"border-top-right-radius: 10px;\n"
+"border-bottom-right-radius: 10px;\n"
+"background-color: rgb(255, 0, 0);\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"#pushButtonAtras:hover {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    color: rgb(255, 0, 0);\n"
+"}")
+        self.pushButtonAtras.setCheckable(False)
+        self.pushButtonAtras.setAutoRepeat(False)
+        self.pushButtonAtras.setAutoExclusive(False)
+        self.pushButtonAtras.setObjectName("pushButtonAtras")
+        self.label_PotNue = QtWidgets.QLabel(self.centralwidget)
+        self.label_PotNue.setGeometry(QtCore.QRect(260, 370, 91, 17))
+        self.label_PotNue.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.label_PotNue.setScaledContents(False)
+        self.label_PotNue.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_PotNue.setObjectName("label_PotNue")
+        self.label_8 = QtWidgets.QLabel(self.centralwidget)
+        self.label_8.setGeometry(QtCore.QRect(30, 370, 211, 17))
+        self.label_8.setObjectName("label_8")
+        self.label_RanEstNue = QtWidgets.QLabel(self.centralwidget)
+        self.label_RanEstNue.setGeometry(QtCore.QRect(260, 410, 91, 17))
+        self.label_RanEstNue.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_RanEstNue.setObjectName("label_RanEstNue")
+        self.label_10 = QtWidgets.QLabel(self.centralwidget)
+        self.label_10.setGeometry(QtCore.QRect(30, 410, 211, 17))
+        self.label_10.setObjectName("label_10")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(260, 300, 101, 51))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButtonLimpiar = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButtonLimpiar.setGeometry(QtCore.QRect(30, 310, 89, 25))
+        self.pushButtonLimpiar.setObjectName("pushButtonLimpiar")
+        self.label_7 = QtWidgets.QLabel(self.centralwidget)
+        self.label_7.setGeometry(QtCore.QRect(360, 370, 67, 17))
+        self.label_7.setText("")
+        self.label_7.setObjectName("label_7")
+        self.label_9 = QtWidgets.QLabel(self.centralwidget)
+        self.label_9.setGeometry(QtCore.QRect(30, 220, 221, 17))
+        self.label_9.setObjectName("label_9")
+        self.label_11 = QtWidgets.QLabel(self.centralwidget)
+        self.label_11.setGeometry(QtCore.QRect(30, 450, 201, 17))
+        self.label_11.setObjectName("label_11")
+        self.label_SecCobNue = QtWidgets.QLabel(self.centralwidget)
+        self.label_SecCobNue.setGeometry(QtCore.QRect(260, 450, 91, 17))
+        self.label_SecCobNue.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_SecCobNue.setObjectName("label_SecCobNue")
+        self.textPotAnt = QtWidgets.QTextEdit(self.centralwidget)
+        self.textPotAnt.setGeometry(QtCore.QRect(260, 60, 101, 31))
+        self.textPotAnt.setTabChangesFocus(True)
+        self.textPotAnt.setUndoRedoEnabled(False)
+        self.textPotAnt.setReadOnly(False)
+        self.textPotAnt.setProperty("tabChangesFocus2", "")
+        self.textPotAnt.setObjectName("textPotAnt")
+        self.textFreAnt = QtWidgets.QTextEdit(self.centralwidget)
+        self.textFreAnt.setGeometry(QtCore.QRect(260, 110, 101, 31))
+        self.textFreAnt.setTabChangesFocus(True)
+        self.textFreAnt.setUndoRedoEnabled(False)
+        self.textFreAnt.setReadOnly(False)
+        self.textFreAnt.setProperty("tabChangesFocus2", "")
+        self.textFreAnt.setObjectName("textFreAnt")
+        self.textSecCobAnt = QtWidgets.QTextEdit(self.centralwidget)
+        self.textSecCobAnt.setGeometry(QtCore.QRect(260, 210, 101, 31))
+        self.textSecCobAnt.setTabChangesFocus(True)
+        self.textSecCobAnt.setObjectName("textSecCobAnt")
+        self.textNueFre = QtWidgets.QTextEdit(self.centralwidget)
+        self.textNueFre.setGeometry(QtCore.QRect(260, 260, 101, 31))
+        self.textNueFre.setTabChangesFocus(True)
+        self.textNueFre.setReadOnly(False)
+        self.textNueFre.setProperty("tabChangesFocus2", "")
+        self.textNueFre.setObjectName("textNueFre")
+        self.textRanEstAnt = QtWidgets.QTextEdit(self.centralwidget)
+        self.textRanEstAnt.setGeometry(QtCore.QRect(260, 160, 101, 31))
+        self.textRanEstAnt.setTabChangesFocus(True)
+        self.textRanEstAnt.setReadOnly(False)
+        self.textRanEstAnt.setProperty("tabChangesFocus2", "")
+        self.textRanEstAnt.setObjectName("textRanEstAnt")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">CAMBIO DE FRECUENCIA MOTOR ELECTRICO</span></p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "Potencia en el eje antiguo (HP):"))
+        self.label_3.setText(_translate("MainWindow", "Frecuencia red antigua (Hz):"))
+        self.label_4.setText(_translate("MainWindow", "Ranuras estatoricas antigua(S1):"))
+        self.label_5.setText(_translate("MainWindow", "Nueva Frecuencia (Hz):"))
+        self.label_6.setText(_translate("MainWindow", "<html><head/><body><p>Nota: Valido cuando la tension de red y el tipo de bobinado se mantiene constante. Es importante tener en cuenta que aumentar la frecuencia de la red eléctrica puede aumentar la velocidad del motor, pero también puede causar sobrecalentamiento y otros problemas en el motor si no se toman las medidas adecuadas. </p></body></html>"))
+        self.pushButtonAtras.setText(_translate("MainWindow", "Atras"))
+        self.label_PotNue.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.label_8.setText(_translate("MainWindow", "Potencia en el eje nuevo(Hp):"))
+        self.label_RanEstNue.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
+        self.label_10.setText(_translate("MainWindow", "Ranuras estatoricas nuevas:"))
+        self.pushButton.setText(_translate("MainWindow", "Calcular"))
+        self.pushButtonLimpiar.setText(_translate("MainWindow", "Limpiar"))
+        self.label_9.setText(_translate("MainWindow", "Seccion de cobre antigua (cm2):"))
+        self.label_11.setText(_translate("MainWindow", "Seccion de cobre nueva(cm2):"))
+        self.label_SecCobNue.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><br/></p></body></html>"))
 
 if __name__ == "__main__":
     import sys

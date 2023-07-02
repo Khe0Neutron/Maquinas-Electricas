@@ -560,7 +560,7 @@ class TablaFlujoMagneticoMotores3F(QMainWindow):
         self.parent().show()
         self.close()
 
-    def crear_tabla(self):
+    """ def crear_tabla(self):
         try:
             direccion = '/home/neutron/Documentos/Proyectos/2/tabla flujo magnetico en motor 3f.xlsx'
             df = pd.read_excel(direccion, sheet_name='Hoja1')
@@ -586,7 +586,7 @@ class TablaFlujoMagneticoMotores3F(QMainWindow):
                 dato = str(df_fila[i][j])
                 if dato == 'nan':
                     dato=''
-                self.ui5.table.setItem(i,j,QTableWidgetItem(dato))
+                self.ui5.table.setItem(i,j,QTableWidgetItem(dato)) """
     
     def mostrar_tabla(self):
         pix = QPixmap("img/tablaFlujoMagneticoM3F.png").scaled(450, 480)
@@ -598,10 +598,14 @@ class CambioDeFrecuenciaMotor(QMainWindow):
     def __init__(self, parent=None):
         super(CambioDeFrecuenciaMotor, self).__init__(parent)
         loadUi('cambioDeFrecuenciaM.ui', self)
+
+        super(CambioDeFrecuenciaMotor, self).__init__(parent)
+        self.ui6 = ventanas.CambioDeFrecuenciaMotor()
+        self.ui6.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Cambio de Frecuencia de Motor")
-        self.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
-        self.pushButtonLimpiar.clicked.connect(self.limpiar)
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui6.pushButtonAtras.clicked.connect(self.abrirVentanaPrincipal)
+        self.ui6.pushButtonLimpiar.clicked.connect(self.limpiar)
+        self.ui6.pushButton.clicked.connect(self.calcular)
 
 
     def abrirVentanaPrincipal(self):
@@ -609,40 +613,49 @@ class CambioDeFrecuenciaMotor(QMainWindow):
         self.close()
 
     def limpiar(self):
-        self.textPotAnt.setText("")
-        self.textFreAnt.setText("")
-        self.textRanEstAnt.setText("")
-        self.textSecCobAnt.setText("")
-        self.textNueFre.setText("")
-        self.label_PotNue.setText("")
-        self.label_RanEstNue.setText("")
-        self.label_SecCobNue.setText("")
-        self.label_7.setText("")
+        self.ui6.textPotAnt.setText("")
+        self.ui6.textFreAnt.setText("")
+        self.ui6.textRanEstAnt.setText("")
+        self.ui6.textSecCobAnt.setText("")
+        self.ui6.textNueFre.setText("")
+        self.ui6.label_PotNue.setText("")
+        self.ui6.label_RanEstNue.setText("")
+        self.ui6.label_SecCobNue.setText("")
+        self.ui6.label_7.setText("")
 
 
     def calcular(self):
-        potAnt = self.textPotAnt.toPlainText()
-        frecAnt = self.textFreAnt.toPlainText()
-        ranEstAnt = self.textRanEstAnt.toPlainText()
-        secCobAnt = self.textSecCobAnt.toPlainText()
-        nueFrec = self.textNueFre.toPlainText()
-        
+        potAnt = self.ui6.textPotAnt.toPlainText()
+        frecAnt = self.ui6.textFreAnt.toPlainText()
+        ranEstAnt = self.ui6.textRanEstAnt.toPlainText()
+        secCobAnt = self.ui6.textSecCobAnt.toPlainText()
+        nueFrec = self.ui6.textNueFre.toPlainText()
+        secCobAnt = str(secCobAnt)
         potNue = CambioDeFrecuenciaMotor.calcularPot(nueFrec,frecAnt,potAnt)
         ranEstNue = CambioDeFrecuenciaMotor.calcularRan(nueFrec,frecAnt,ranEstAnt)
-        #if secCobAnt!="":
-        secCobNue = CambioDeFrecuenciaMotor.calcularSec(nueFrec,frecAnt,secCobAnt)
-        secCobNue = float("%.4f" % secCobNue)
-        secCobNue = str(secCobNue)
-        #else:
-        secCobNue = ""    
-        potNue = float("%.4f" % potNue)
-        ranEstNue = float("%.4f" % ranEstNue)
-        potNue = str(potNue)
-        ranEstNue = str(ranEstNue)
-        self.label_PotNue.setText(potNue)
-        self.label_7.setText("HP")
-        self.label_RanEstNue.setText(ranEstNue)
-        self.label_SecCobNue.setText(secCobNue)
+        if secCobAnt != "":
+            secCobNue = CambioDeFrecuenciaMotor.calcularSec(nueFrec,frecAnt,secCobAnt)
+            secCobNue = float("%.4f" % secCobNue)
+            secCobNue = str(secCobNue)
+            potNue = float("%.4f" % potNue)
+            ranEstNue = float("%.4f" % ranEstNue)
+            potNue = str(potNue)
+            ranEstNue = str(ranEstNue)
+            self.ui6.label_PotNue.setText(potNue)
+            self.ui6.label_7.setText("HP")
+            self.ui6.label_RanEstNue.setText(ranEstNue)
+            self.ui6.label_SecCobNue.setText(secCobNue)
+
+        else:
+            secCobNue = ""    
+            potNue = float("%.4f" % potNue)
+            ranEstNue = float("%.4f" % ranEstNue)
+            potNue = str(potNue)
+            ranEstNue = str(ranEstNue)
+            self.ui6.label_PotNue.setText(potNue)
+            self.ui6.label_7.setText("HP")
+            self.ui6.label_RanEstNue.setText(ranEstNue)
+            self.ui6.label_SecCobNue.setText(secCobNue)
 
 
     def calcularPot(nueFrec,frecAnt,potAnt):
