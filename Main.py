@@ -857,10 +857,7 @@ class motorMonofasicoCalc(QMainWindow):
         self.ui8.label_SeccNue_2.setText(secNue2)
 
 class calculosVarios(QMainWindow):
-    def __init__(self,parent):
-        super(calculosVarios, self).__init__(parent)
-        loadUi('calculosVarios.ui', self)
-
+    def __init__(self,parent=None):
         super(calculosVarios, self).__init__(parent)
         self.ui9 = ventanas.calculosVarios()
         self.ui9.setupUi(self)  # Configurar la interfaz en la ventana principal
