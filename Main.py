@@ -1097,389 +1097,415 @@ class pesoCobre(QMainWindow):
         
 class Pag11(QDialog):
     def __init__(self, parent):
-        super(Pag11,self).__init__(parent)
-        loadUi('dialog1.ui', self)
+        super(Pag11, self).__init__(parent)
+        self.ui9_11 = ventanas.Pag11()
+        self.ui9_11.setupUi(self)  # Configurar la interfaz en la ventana principal
+        
         self.setWindowTitle("Amp conociendo HP en CC")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_11.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        efi = float(self.textEdit_Efi.toPlainText())
-        hp = float(self.textEdit_HP.toPlainText())
+        ten = float(self.ui9_11.textEdit_E.toPlainText())
+        efi = float(self.ui9_11.textEdit_Efi.toPlainText())
+        hp = float(self.ui9_11.textEdit_HP.toPlainText())
         cor = ten*efi/(746*hp)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_11.label_A.setText(cor)
 class Pag21(QDialog):
     def __init__(self, parent):
-        super(Pag21,self).__init__(parent)
-        loadUi('dialog2.ui', self)
+        super(Pag21, self).__init__(parent)
+        self.ui9_21 = ventanas.Pag21()
+        self.ui9_21.setupUi(self)
         self.setWindowTitle("Amp conociendo HP en AC 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_21.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        efi = float(self.textEdit_Efi.toPlainText())
-        hp = float(self.textEdit_HP.toPlainText())
-        pf = float(self.textEdit_facPot.toPlainText())
+        ten = float(self.ui9_21.textEdit_E.toPlainText())
+        efi = float(self.ui9_21.textEdit_Efi.toPlainText())
+        hp = float(self.ui9_21.textEdit_HP.toPlainText())
+        pf = float(self.ui9_21.textEdit_facPot.toPlainText())
         
         cor = 746*hp/(ten*pf*efi)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_21.label_A.setText(cor)
 class Pag31(QDialog):
     def __init__(self, parent):
-        super(Pag31,self).__init__(parent)
-        loadUi('dialog31.ui', self)
+        super(Pag31, self).__init__(parent)
+        self.ui9_31 = ventanas.Pag31()
+        self.ui9_31.setupUi(self)
         self.setWindowTitle("Amp conociendo HP en AC 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_31.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        efi = float(self.textEdit_Efi.toPlainText())
-        hp = float(self.textEdit_HP.toPlainText())
-        pf = float(self.textEdit_facPot.toPlainText())
+        ten = float(self.ui9_31.textEdit_E.toPlainText())
+        efi = float(self.ui9_31.textEdit_Efi.toPlainText())
+        hp = float(self.ui9_31.textEdit_HP.toPlainText())
+        pf = float(self.ui9_31.textEdit_facPot.toPlainText())
         
         cor = 746*hp/(2*ten*pf*efi)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_31.label_A.setText(cor)
 class Pag41(QDialog):
     def __init__(self, parent):
-        super(Pag41,self).__init__(parent)
-        loadUi('dialog41.ui', self)
+        super(Pag41, self).__init__(parent)
+        self.ui9_41 = ventanas.Pag41()
+        self.ui9_41.setupUi(self)
         self.setWindowTitle("Amp conociendo HP en AC 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_41.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        efi = float(self.textEdit_Efi.toPlainText())
-        hp = float(self.textEdit_HP.toPlainText())
-        pf = float(self.textEdit_facPot.toPlainText())
+        ten = float(self.ui9_41.textEdit_E.toPlainText())
+        efi = float(self.ui9_41.textEdit_Efi.toPlainText())
+        hp = float(self.ui9_41.textEdit_HP.toPlainText())
+        pf = float(self.ui9_41.textEdit_facPot.toPlainText())
         
         cor = 746*hp/(ten*pf*efi*3**(0.5))
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_41.label_A.setText(cor)
 class Pag12(QDialog):
     def __init__(self, parent):
-        super(Pag12,self).__init__(parent)
-        loadUi('dialog12.ui', self)
+        super(Pag12, self).__init__(parent)
+        self.ui9_12 = ventanas.Pag12()
+        self.ui9_12.setupUi(self)
         self.setWindowTitle("Amp conociendo kW en CC")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_12.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        pot = float(self.textEdit_kW.toPlainText())
+        ten = float(self.ui9_12.textEdit_E.toPlainText())
+        pot = float(self.ui9_12.textEdit_kW.toPlainText())
         
         cor = pot*1000/ten
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_12.label_A.setText(cor)
 class Pag22(QDialog):
     def __init__(self, parent):
-        super(Pag22,self).__init__(parent)
-        loadUi('dialog22.ui', self)
+        super(Pag22, self).__init__(parent)
+        self.ui9_22 = ventanas.Pag22()
+        self.ui9_22.setupUi(self)
         self.setWindowTitle("Amp conociendo kW en AC 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_22.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
-        pot = float(self.textEdit_kW.toPlainText())
+        ten = float(self.ui9_22.textEdit_E.toPlainText())
+        factor = float(self.ui9_22.textEdit_PF.toPlainText())
+        pot = float(self.ui9_22.textEdit_kW.toPlainText())
         
         cor = pot*1000/(ten*factor)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_22.label_A.setText(cor)
 class Pag32(QDialog):
     def __init__(self, parent):
-        super(Pag32,self).__init__(parent)
-        loadUi('dialog32.ui', self)
+        super(Pag32, self).__init__(parent)
+        self.ui9_32 = ventanas.Pag32()
+        self.ui9_32.setupUi(self)
         self.setWindowTitle("Amp conociendo kW en AC 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_32.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
-        pot = float(self.textEdit_kW.toPlainText())
+        ten = float(self.ui9_32.textEdit_E.toPlainText())
+        factor = float(self.ui9_32.textEdit_PF.toPlainText())
+        pot = float(self.ui9_32.textEdit_kW.toPlainText())
         
         cor = pot*1000/(2*ten*factor)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_32.label_A.setText(cor)
 class Pag42(QDialog):
     def __init__(self, parent):
-        super(Pag42,self).__init__(parent)
-        loadUi('dialog42.ui', self)
+        super(Pag42, self).__init__(parent)
+        self.ui9_42 = ventanas.Pag42()
+        self.ui9_42.setupUi(self)
         self.setWindowTitle("Amp conociendo kW en AC 3F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_42.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
-        pot = float(self.textEdit_kW.toPlainText())
+        ten = float(self.ui9_42.textEdit_E.toPlainText())
+        factor = float(self.ui9_42.textEdit_PF.toPlainText())
+        pot = float(self.ui9_42.textEdit_kW.toPlainText())
         
         cor = pot*1000/(ten*factor*3**(0.5))
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_42.label_A.setText(cor)
 class Pag23(QDialog):
     def __init__(self, parent):
-        super(Pag23,self).__init__(parent)
-        loadUi('dialog23.ui', self)
+        super(Pag23, self).__init__(parent)
+        self.ui9_23 = ventanas.Pag23()
+        self.ui9_23.setupUi(self)
         self.setWindowTitle("Amp conociendo kVA en AC 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_23.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        pot = float(self.textEdit_kva.toPlainText())
+        ten = float(self.ui9_23.textEdit_E.toPlainText())
+        pot = float(self.ui9_23.textEdit_kva.toPlainText())
         
         cor = pot*1000/ten
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_23.label_A.setText(cor)
 class Pag33(QDialog):
     def __init__(self, parent):
-        super(Pag33,self).__init__(parent)
-        loadUi('dialog23.ui', self)
+        super(Pag33, self).__init__(parent)
+        self.ui9_33 = ventanas.Pag23() #Se considera 23 pq es parecida a 33
+        self.ui9_33.setupUi(self)
         self.setWindowTitle("Amp conociendo kVA en AC 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_33.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        pot = float(self.textEdit_kva.toPlainText())
+        ten = float(self.ui9_33.textEdit_E.toPlainText())
+        pot = float(self.ui9_33.textEdit_kva.toPlainText())
         
         cor = pot*1000/(2*ten)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_33.label_A.setText(cor)
 class Pag43(QDialog):
     def __init__(self, parent):
-        super(Pag43,self).__init__(parent)
-        loadUi('dialog23.ui', self)
+        super(Pag43, self).__init__(parent)
+        self.ui9_43 = ventanas.Pag23() #Se considera 23 pq es parecido a 43
+        self.ui9_43.setupUi(self)
         self.setWindowTitle("Amp conociendo kVA en AC 3F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_43.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        pot = float(self.textEdit_kva.toPlainText())
+        ten = float(self.ui9_43.textEdit_E.toPlainText())
+        pot = float(self.ui9_43.textEdit_kva.toPlainText())
         
         cor = pot*1000/(ten*3**0.5)
         cor = float("%.2f" %cor)
         cor = str(cor)
-        self.label_A.setText(cor)
+        self.ui9_43.label_A.setText(cor)
 class Pag14(QDialog):
     def __init__(self, parent):
-        super(Pag14,self).__init__(parent)
-        loadUi('dialog14.ui', self)
+        super(Pag14, self).__init__(parent)
+        self.ui9_41 = ventanas.Pag14()
+        self.ui9_41.setupUi(self)
         self.setWindowTitle("kW conociendo I y E en CC")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_41.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
+        ten = float(self.ui9_41.textEdit_E.toPlainText())
+        cor = float(self.ui9_41.textEdit_I.toPlainText())
         
         pot = ten*cor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_41.label_P.setText(pot)
 class Pag24(QDialog):
     def __init__(self, parent):
-        super(Pag24,self).__init__(parent)
-        loadUi('dialog24.ui', self)
+        super(Pag24, self).__init__(parent)
+        self.ui9_24 = ventanas.Pag24()
+        self.ui9_24.setupUi(self)
         self.setWindowTitle("kW conociendo I y E en CA 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_24.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
+        ten = float(self.ui9_24.textEdit_E.toPlainText())
+        cor = float(self.ui9_24.textEdit_I.toPlainText())
+        factor = float(self.ui9_24.textEdit_PF.toPlainText())
 
         pot = ten*cor*factor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_24.label_P.setText(pot)
 class Pag34(QDialog):
     def __init__(self, parent):
-        super(Pag34,self).__init__(parent)
-        loadUi('dialog24.ui', self)
+        super(Pag34, self).__init__(parent)
+        self.ui9_34 = ventanas.Pag24() #Parecido a 24
+        self.ui9_34.setupUi(self)
         self.setWindowTitle("kW conociendo I y E en CA 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_34.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
+        ten = float(self.ui9_34.textEdit_E.toPlainText())
+        cor = float(self.ui9_34.textEdit_I.toPlainText())
+        factor = float(self.ui9_34.textEdit_PF.toPlainText())
 
         pot = 2*ten*cor*factor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_34.label_P.setText(pot)
 class Pag44(QDialog):
     def __init__(self, parent):
-        super(Pag44,self).__init__(parent)
-        loadUi('dialog24.ui', self)
-        self.setWindowTitle("kW conociendo I y E en CA 3F")
-        self.pushButton.clicked.connect(self.calcular)
+        super(Pag44, self).__init__(parent)
+        self.ui9_44 = ventanas.Pag24() #Parecido a 24
+        self.ui9_44.setupUi(self)
+        self.ui9_44.setWindowTitle("kW conociendo I y E en CA 3F")
+        self.ui9_44.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
+        ten = float(self.ui9_44.textEdit_E.toPlainText())
+        cor = float(self.ui9_44.textEdit_I.toPlainText())
+        factor = float(self.ui9_44.textEdit_PF.toPlainText())
 
         pot = (3**0.5)*ten*cor*factor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_44.label_P.setText(pot)
 class Pag25(QDialog):
     def __init__(self, parent):
-        super(Pag25,self).__init__(parent)
-        loadUi('dialog25.ui', self)
+        super(Pag25, self).__init__(parent)
+        self.ui9_25 = ventanas.Pag25()
+        self.ui9_25.setupUi(self)
         self.setWindowTitle("kVA conociendo I y E en CA 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_25.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
+        ten = float(self.ui9_25.textEdit_E.toPlainText())
+        cor = float(self.ui9_25.textEdit_I.toPlainText())
 
         pot = ten*cor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_25.label_P.setText(pot)
 class Pag35(QDialog):
     def __init__(self, parent):
-        super(Pag35,self).__init__(parent)
-        loadUi('dialog25.ui', self)
+        super(Pag35, self).__init__(parent)
+        self.ui9_35 = ventanas.Pag25() #Parecido a 25
+        self.ui9_35.setupUi(self)
         self.setWindowTitle("kVA conociendo I y E en CA 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_35.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
+        ten = float(self.ui9_35.textEdit_E.toPlainText())
+        cor = float(self.ui9_35.textEdit_I.toPlainText())
 
         pot = 2*ten*cor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_35.label_P.setText(pot)
 class Pag45(QDialog):
     def __init__(self, parent):
-        super(Pag45,self).__init__(parent)
-        loadUi('dialog25.ui', self)
+        super(Pag45, self).__init__(parent)
+        self.ui9_45 = ventanas.Pag25() #Parecida a 25
+        self.ui9_45.setupUi(self)
         self.setWindowTitle("kVA conociendo I y E en CA 3F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_45.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
+        ten = float(self.ui9_45.textEdit_E.toPlainText())
+        cor = float(self.ui9_45.textEdit_I.toPlainText())
 
         pot = (3**0.5)*ten*cor/1000
         pot = float("%.2f" %pot)
         pot = str(pot)
-        self.label_P.setText(pot)
+        self.ui9_45.label_P.setText(pot)
 class Pag16(QDialog):
     def __init__(self, parent):
-        super(Pag16,self).__init__(parent)
-        loadUi('dialog16.ui', self)
+        super(Pag16, self).__init__(parent)
+        self.ui9_16 = ventanas.Pag16()
+        self.ui9_16.setupUi(self)
         self.setWindowTitle("HP en CC")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_16.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        efi = float(self.textEdit_efi.toPlainText())
+        ten = float(self.ui9_16.textEdit_E.toPlainText())
+        cor = float(self.ui9_16.textEdit_I.toPlainText())
+        efi = float(self.ui9_16.textEdit_efi.toPlainText())
 
         hp = cor*ten*efi/746
         hp = float("%.2f" %hp)
         hp = str(hp)
-        self.label_HP.setText(hp)
+        self.ui9_16.label_HP.setText(hp)
 class Pag26(QDialog):
     def __init__(self, parent):
-        super(Pag26,self).__init__(parent)
-        loadUi('dialog26.ui', self)
+        super(Pag26, self).__init__(parent)
+        self.ui9_26 = ventanas.Pag26()
+        self.ui9_26.setupUi(self)
         self.setWindowTitle("HP en CA 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_26.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        efi = float(self.textEdit_efi.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
+        ten = float(self.ui9_26.textEdit_E.toPlainText())
+        cor = float(self.ui9_26.textEdit_I.toPlainText())
+        efi = float(self.ui9_26.textEdit_efi.toPlainText())
+        factor = float(self.ui9_26.textEdit_PF.toPlainText())
 
         hp = cor*ten*efi*factor/746
         hp = float("%.2f" %hp)
         hp = str(hp)
-        self.label_HP.setText(hp)
+        self.ui9_26.label_HP.setText(hp)
 class Pag36(QDialog):
     def __init__(self, parent):
-        super(Pag36,self).__init__(parent)
-        loadUi('dialog26.ui', self)
+        super(Pag36, self).__init__(parent)
+        self.ui9_36 = ventanas.Pag26() #Parecida a 26
+        self.ui9_36.setupUi(self)
         self.setWindowTitle("HP en CA 2F")
         self.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        efi = float(self.textEdit_efi.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
+        ten = float(self.ui9_36.textEdit_E.toPlainText())
+        cor = float(self.ui9_36.textEdit_I.toPlainText())
+        efi = float(self.ui9_36.textEdit_efi.toPlainText())
+        factor = float(self.ui9_36.textEdit_PF.toPlainText())
 
         hp = 2*cor*ten*efi*factor/746
         hp = float("%.2f" %hp)
         hp = str(hp)
-        self.label_HP.setText(hp)
+        self.ui9_36.label_HP.setText(hp)
 class Pag46(QDialog):
     def __init__(self, parent):
-        super(Pag46,self).__init__(parent)
-        loadUi('dialog26.ui', self)
+        super(Pag46, self).__init__(parent)
+        self.ui9_46 = ventanas.Pag26() #Parecida a 26
+        self.ui9_46.setupUi(self)
         self.setWindowTitle("HP en CA 3F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_46.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        efi = float(self.textEdit_efi.toPlainText())
-        factor = float(self.textEdit_PF.toPlainText())
+        ten = float(self.ui9_46.textEdit_E.toPlainText())
+        cor = float(self.ui9_46.textEdit_I.toPlainText())
+        efi = float(self.ui9_46.textEdit_efi.toPlainText())
+        factor = float(self.ui9_46.textEdit_PF.toPlainText())
 
         hp = (3**0.5)*cor*ten*efi*factor/746
         hp = float("%.2f" %hp)
         hp = str(hp)
-        self.label_HP.setText(hp)
+        self.ui9_46.label_HP.setText(hp)
 class Pag27(QDialog):
     def __init__(self, parent):
-        super(Pag27,self).__init__(parent)
-        loadUi('dialog27.ui', self)
+        super(Pag27, self).__init__(parent)
+        self.ui9_27 = ventanas.Pag27()
+        self.ui9_27.setupUi(self)
         self.setWindowTitle("PF en CA 1F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_27.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        pot = float(self.textEdit_W.toPlainText())
+        ten = float(self.ui9_27.textEdit_E.toPlainText())
+        cor = float(self.ui9_27.textEdit_I.toPlainText())
+        pot = float(self.ui9_27.textEdit_W.toPlainText())
 
         pf = pot/(ten*cor)
         pf = float("%.2f" %pf)
         pf = str(pf)
-        self.label_PF.setText(pf)
+        self.ui9_27.label_PF.setText(pf)
 class Pag37(QDialog):
     def __init__(self, parent):
-        super(Pag37,self).__init__(parent)
-        loadUi('dialog27.ui', self)
+        super(Pag37, self).__init__(parent)
+        self.ui9_37 = ventanas.Pag27() #Parecido a 27
+        self.ui9_37.setupUi(self)
         self.setWindowTitle("PF en CA 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_37.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
-        ten = float(self.textEdit_E.toPlainText())
-        cor = float(self.textEdit_I.toPlainText())
-        pot = float(self.textEdit_W.toPlainText())
+        ten = float(self.ui9_37.textEdit_E.toPlainText())
+        cor = float(self.ui9_37.textEdit_I.toPlainText())
+        pot = float(self.ui9_37.textEdit_W.toPlainText())
 
         pf = pot/(2*ten*cor)
         pf = float("%.2f" %pf)
         pf = str(pf)
-        self.label_PF.setText(pf)
+        self.ui9_37.label_PF.setText(pf)
 class Pag47(QDialog):
     def __init__(self, parent):
-        super(Pag47,self).__init__(parent)
-        loadUi('dialog27.ui', self)
+        super(Pag11, self).__init__(parent)
+        self.ui9_11 = ventanas.Pag27() #Parecido a 27
+        self.ui9_11.setupUi(self)
         self.setWindowTitle("PF en CA 3F")
         self.pushButton.clicked.connect(self.calcular)
 
