@@ -596,9 +596,7 @@ class TablaFlujoMagneticoMotores3F(QMainWindow):
 
 class CambioDeFrecuenciaMotor(QMainWindow):
     def __init__(self, parent=None):
-        super(CambioDeFrecuenciaMotor, self).__init__(parent)
-        loadUi('cambioDeFrecuenciaM.ui', self)
-
+        #
         super(CambioDeFrecuenciaMotor, self).__init__(parent)
         self.ui6 = ventanas.CambioDeFrecuenciaMotor()
         self.ui6.setupUi(self)  # Configurar la interfaz en la ventana principal
@@ -1057,9 +1055,6 @@ class probarNucleo(QMainWindow):
 class pesoCobre(QMainWindow):
     def __init__(self, parent=None):
         super(pesoCobre, self).__init__(parent)
-        loadUi('pesoCobre.ui', self)
-
-        super(pesoCobre, self).__init__(parent)
         self.ui11 = ventanas.pesoCobre()
         self.ui11.setupUi(self)  # Configurar la interfaz en la ventana principal
         self.setWindowTitle("Calcular Peso del Cobre")
@@ -1333,7 +1328,7 @@ class Pag44(QDialog):
         super(Pag44, self).__init__(parent)
         self.ui9_44 = ventanas.Pag24() #Parecido a 24
         self.ui9_44.setupUi(self)
-        self.ui9_44.setWindowTitle("kW conociendo I y E en CA 3F")
+        self.setWindowTitle("kW conociendo I y E en CA 3F")
         self.ui9_44.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
@@ -1434,7 +1429,7 @@ class Pag36(QDialog):
         self.ui9_36 = ventanas.Pag26() #Parecida a 26
         self.ui9_36.setupUi(self)
         self.setWindowTitle("HP en CA 2F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_36.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
         ten = float(self.ui9_36.textEdit_E.toPlainText())
@@ -1500,11 +1495,11 @@ class Pag37(QDialog):
         self.ui9_37.label_PF.setText(pf)
 class Pag47(QDialog):
     def __init__(self, parent):
-        super(Pag11, self).__init__(parent)
+        super(Pag47, self).__init__(parent)
         self.ui9_11 = ventanas.Pag27() #Parecido a 27
         self.ui9_11.setupUi(self)
         self.setWindowTitle("PF en CA 3F")
-        self.pushButton.clicked.connect(self.calcular)
+        self.ui9_11.pushButton.clicked.connect(self.calcular)
 
     def calcular(self):
         ten = float(self.textEdit_E.toPlainText())
