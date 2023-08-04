@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="img">
-    <file>tablaFlujoMagneticoM3F.png</file>
-    <file>png-transparent-electric-motor-induction-motor-ac.png</file>
-    <file>motor.jpg</file>
-    <file>mot.png</file>
-  </qresource>
-</RCC>
